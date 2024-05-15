@@ -51,7 +51,7 @@ const UserProfileForm = ({ isLoading, onSave, currentUser }: Props) => {
         className='space-y-4 bg-gray-50 rounded-lg md:p-10 sm:p-10 xss:p-5'
       >
         <div>
-          <h2 className='text-2xl font-bold'>User Profile</h2>
+          <h2 className='text-2xl font-bold -ml-0.5'>User Profile</h2>
           <FormDescription>
             View and change your profile information here
           </FormDescription>

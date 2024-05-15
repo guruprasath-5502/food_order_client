@@ -5,7 +5,7 @@ const Footer = () => {
     <div className='bg-orange-500 py-3'>
       <div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
         <Link to='/'>
-          <span className='text-2xl text-white font-bold tracking-tight'>
+          <span className='text-2xl text-white font-bold tracking-tight xss:text-xl'>
             Eats.com
           </span>
         </Link>
