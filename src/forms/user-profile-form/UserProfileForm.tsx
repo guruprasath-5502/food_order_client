@@ -13,32 +13,42 @@ import {
 import { Input } from '@/components/ui/input';
 import LoadingButton from '@/components/LoadingButton';
 import { Button } from '@/components/ui/button';
+import { User } from '@/types';
+import { useEffect } from 'react';
 
 const formSchema = z.object({
   email: z.string().optional(),
-  name: z.string().min(1, 'Name is required'),
-  addressLine1: z.string().min(1, 'AddressLine1 is required'),
+  name: z.string().min(1, 'name is required'),
+  addressLine1: z.string().min(1, 'Address Line 1 is required'),
   city: z.string().min(1, 'City is required'),
   country: z.string().min(1, 'Country is required'),
 });
 
-type UserFormData = z.infer<typeof formSchema>;
+export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
+  currentUser: User;
   onSave: (userProfileData: UserFormData) => void;
   isLoading: boolean;
 };
 
-const UserProfileForm = ({ isLoading, onSave }: Props) => {
+const UserProfileForm = ({ isLoading, onSave, currentUser }: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: currentUser,
   });
+
+  useEffect(() => {
+    if (currentUser) {
+      form.reset(currentUser);
+    }
+  }, [currentUser, form]);
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSave)}
-        className='space-y-4 bg-gray-50 rounded-lg md:p-10'
+        className='space-y-4 bg-gray-50 rounded-lg md:p-10 sm:p-10 xs:p-5'
       >
         <div>
           <h2 className='text-2xl font-bold'>User Profile</h2>
