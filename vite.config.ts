@@ -10,6 +10,12 @@ export default defineConfig({
     },
   },
   build: {
-    chunkSizeWarningLimit: 300, // Set the chunk size warning limit to 300 KB
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['lodash'], // Place 'lodash' module in a separate chunk named 'vendor'
+        },
+      },
+    },
   },
 });
