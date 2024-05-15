@@ -18,9 +18,12 @@ const UserNameMenu = () => {
         <CircleUserRound className='text-orange-500' />
         {user?.email}
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className='hidden md:block'>
         <DropdownMenuItem>
-          <Link to='/user-profile' className='font-bold hover:text-orange-500'>
+          <Link
+            to='/user-profile'
+            className='font-bold hover:text-orange-500 mx-auto'
+          >
             User Profile
           </Link>
         </DropdownMenuItem>
