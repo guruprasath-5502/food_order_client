@@ -9,4 +9,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1024, // Set the chunk size warning limit to 1024 KB (1 MB)
+  },
 });
