@@ -35,12 +35,12 @@ type Props = {
 const UserProfileForm = ({ isLoading, onSave, currentUser }: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
-    defaultValues: currentUser,
+    defaultValues: currentUser.data,
   });
 
   useEffect(() => {
     if (currentUser) {
-      form.reset(currentUser);
+      form.reset(currentUser.data);
     }
   }, [currentUser, form]);
 
