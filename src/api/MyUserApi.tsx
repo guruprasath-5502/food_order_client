@@ -118,11 +118,7 @@ export const useMyGetUser = () => {
       throw new Error('Failed to fetch user');
     }
 
-    const resData = await response.json();
-
-    const { data } = resData;
-
-    return Promise.resolve(data);
+    return response.json();
   };
 
   const {
