@@ -59,7 +59,9 @@ type UpdateMyUserRequest = {
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const updateUserRequest = async (formData: UpdateMyUserRequest) => {
+  const updateUserRequest = async (
+    formData: UpdateMyUserRequest
+  ): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/user/myuser`, {
