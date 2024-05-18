@@ -19,7 +19,13 @@ const AuthCallbackPage = () => {
     navigate('/');
   }, [createUser, navigate, user]);
 
-  return <LoadingSpinner />;
+  return (
+    <div className='flex flex-col min-h-screen'>
+      <div className='container mx-auto flex-1 py-10 flex items-center justify-center'>
+        <LoadingSpinner />
+      </div>
+    </div>
+  );
 };
 
 export default AuthCallbackPage;
