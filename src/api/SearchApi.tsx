@@ -37,7 +37,7 @@ export const useSearchRestaurant = (
     error,
   } = useQuery(['searchRestaurants', searchState], createSearchRequest, {
     enabled: !!city,
-    cacheTime: 0,
+    retry: false,
   });
 
   if (error) {

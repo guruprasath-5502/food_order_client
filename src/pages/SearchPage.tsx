@@ -74,7 +74,7 @@ const SearchPage = () => {
     return <LoadingSpinner />;
   }
 
-  if (!results?.data.data || !city) {
+  if (!results?.data.data.length || !city) {
     return (
       <div className='flex flex-col items-center justify-center'>
         <img src={noResultsIcon} alt='No results found' className='w-32' />
