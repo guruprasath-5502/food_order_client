@@ -1,6 +1,7 @@
 import { useMyGetUser, useUpdateMyUser } from '@/api/MyUserApi';
 import { Skeleton } from '@/components/ui/skeleton';
 import UserProfileForm from '@/forms/user-profile-form/UserProfileForm';
+import noResultsIcon from '../../public/NoResult.svg';
 
 const UserProfilePage = () => {
   const { currentUser, isLoading: isGetLoading } = useMyGetUser();
@@ -27,7 +28,12 @@ const UserProfilePage = () => {
   }
 
   if (!currentUser) {
-    return <span>Unable to load user profile</span>;
+    return (
+      <div className='flex flex-col items-center justify-center'>
+        <img src={noResultsIcon} alt='No results found' className='w-32' />
+        <span className='text-sm font-semibold'>Oops!</span>
+      </div>
+    );
   }
 
   return (

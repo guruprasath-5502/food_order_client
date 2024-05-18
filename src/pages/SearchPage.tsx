@@ -1,5 +1,6 @@
 import { useSearchRestaurant } from '@/api/SearchApi';
 import CuisineFilter from '@/components/CuisineFilter';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import PaginationSelector from '@/components/PaginationSelector';
 import SearchBar, { SearchForm } from '@/components/SearchBar';
 import SearchResultsCard from '@/components/SearchResultsCard';
@@ -7,6 +8,7 @@ import SearchResultsInfo from '@/components/SearchResultsInfo';
 import SortOptionDropdown from '@/components/SortOptionDropdown';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import noResultsIcon from '../../public/NoResult.svg';
 
 export type SearchState = {
   searchQuery: string;
@@ -69,11 +71,16 @@ const SearchPage = () => {
   };
 
   if (isLoading) {
-    <span>Loading...</span>;
+    return <LoadingSpinner />;
   }
 
   if (!results?.data.data || !city) {
-    return <span>No results found</span>;
+    return (
+      <div className='flex flex-col items-center justify-center'>
+        <img src={noResultsIcon} alt='No results found' className='w-32' />
+        <span className='text-sm font-semibold'>Oops!</span>
+      </div>
+    );
   }
 
   return (
