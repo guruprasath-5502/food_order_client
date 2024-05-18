@@ -45,12 +45,12 @@ export const useSearchRestaurant = (
   }
 
   return {
-    results: results?.status
-      ? results
-      : {
+    results: error
+      ? {
           data: { data: [], pagination: { total: 0, page: 1, pages: 0 } },
           status: false,
-        },
+        }
+      : results,
     isLoading,
   };
 };
