@@ -24,6 +24,10 @@ export const useSearchRestaurant = (
       }
     );
 
+    if (!response.ok) {
+      throw new Error('Failed to fetch restaurant');
+    }
+
     return response.json();
   };
 
@@ -36,11 +40,7 @@ export const useSearchRestaurant = (
     retry: false,
   });
 
-  if (error) {
-    toast.error('Failed to fetch restaurant');
-  }
-
-  if (!results?.status) {
+  if (error && !isLoading) {
     toast.error('Failed to fetch restaurant');
   }
 
