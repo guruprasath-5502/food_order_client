@@ -38,7 +38,6 @@ export const useSearchRestaurant = (
   } = useQuery(['searchRestaurants', searchState], createSearchRequest, {
     enabled: !!city,
     retry: false,
-    cacheTime: 0,
   });
 
   if (error) {
@@ -46,7 +45,12 @@ export const useSearchRestaurant = (
   }
 
   return {
-    results,
+    results: results?.status
+      ? results
+      : {
+          data: { data: [], pagination: { total: 0, page: 1, pages: 0 } },
+          status: false,
+        },
     isLoading,
   };
 };
