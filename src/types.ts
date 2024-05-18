@@ -12,25 +12,39 @@ export type User = {
   };
 };
 
-type MenuItem = {
+export type MenuItem = {
   name: string;
   price: number;
 };
 
 export type Restaurant = {
   status: boolean;
+  data: RestaurantObj;
+};
+
+export type RestaurantObj = {
+  _id: string;
+  user: string;
+  restaurantName: string;
+  city: string;
+  country: string;
+  deliveryPrice: number;
+  estimatedDeliveryTime: number;
+  cuisines: string[];
+  menuItems: MenuItem[];
+  imageUrl: string;
+  lastUpdated: string;
+  flgUseStatus: number;
+};
+
+export type RestaurantSearchResponse = {
+  status: boolean;
   data: {
-    _id: string;
-    user: string;
-    restaurantName: string;
-    city: string;
-    country: string;
-    deliveryPrice: number;
-    estimatedDeliveryTime: number;
-    cuisines: string[];
-    menuItems: MenuItem[];
-    imageUrl: string;
-    lastUpdated: string;
-    flgUseStatus: number;
+    data: RestaurantObj[];
+    pagination: {
+      total: number;
+      page: number;
+      pages: number;
+    };
   };
 };
