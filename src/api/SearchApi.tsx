@@ -40,7 +40,7 @@ export const useSearchRestaurant = (
     retry: false,
   });
 
-  if (error) {
+  if (error && !isLoading) {
     toast.error('Failed to fetch restaurant');
   }
 
