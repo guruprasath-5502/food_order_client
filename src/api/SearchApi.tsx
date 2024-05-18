@@ -37,10 +37,10 @@ export const useSearchRestaurant = (
     error,
   } = useQuery(['searchRestaurants', searchState], createSearchRequest, {
     enabled: !!city,
-    retry: false,
+    cacheTime: 0,
   });
 
-  if (error && !isLoading) {
+  if (error) {
     toast.error('Failed to fetch restaurant');
   }
 
