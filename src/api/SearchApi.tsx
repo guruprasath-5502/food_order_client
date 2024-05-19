@@ -42,6 +42,9 @@ export const useSearchRestaurant = (
   });
 
   if (error && !isLoading && !isRefetching) {
+    if (results) {
+      results.data.data = [];
+    }
     toast.error('Failed to fetch restaurant');
   }
 
