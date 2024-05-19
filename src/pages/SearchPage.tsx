@@ -115,11 +115,13 @@ const SearchPage = () => {
         {results.data.data.map((restaurant) => (
           <SearchResultsCard restaurant={restaurant} />
         ))}
-        <PaginationSelector
-          onPageChange={setPage}
-          page={results.data.pagination.page}
-          pages={results.data.pagination.pages}
-        />
+        {results.data.pagination.total > 0 && (
+          <PaginationSelector
+            onPageChange={setPage}
+            page={results.data.pagination.page}
+            pages={results.data.pagination.pages}
+          />
+        )}
       </div>
     </div>
   );
