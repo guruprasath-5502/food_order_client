@@ -53,7 +53,7 @@ export type RestaurantSearchResponse = {
 };
 
 type CartItemsArrayType = {
-  _id: string;
+  _id?: string;
   menuItemId: string;
   name: string;
   quantity: string;
