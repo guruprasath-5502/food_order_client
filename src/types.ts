@@ -13,6 +13,7 @@ export type User = {
 };
 
 export type MenuItem = {
+  _id: string;
   name: string;
   price: number;
 };
