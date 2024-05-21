@@ -9,10 +9,18 @@ const MobileNavLinks = () => {
     <>
       <SheetClose asChild>
         <Link
+          to='/order-status'
+          className='flex justify-center items-center font-bold hover:text-orange-500'
+        >
+          Order Status
+        </Link>
+      </SheetClose>
+      <SheetClose asChild>
+        <Link
           to='/manage-restaurant'
           className='flex justify-center items-center font-bold hover:text-orange-500'
         >
-          Manage Restaurant
+          My Restaurant
         </Link>
       </SheetClose>
       <SheetClose asChild>
